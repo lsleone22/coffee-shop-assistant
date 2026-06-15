@@ -39,11 +39,6 @@ Dairy is present in drinks made with milk or whipped cream. If you avoid dairy, 
 
 ---
 
-## Unicorn Dust
-
-Unicorn Dust is a new topping that contains no allergens whatsoever. It is safe for dairy-free, soy-free, nut-free, and gluten-free orders.
-
----
 
 ## Caffeine
 
