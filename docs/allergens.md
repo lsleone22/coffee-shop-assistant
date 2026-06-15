@@ -39,6 +39,11 @@ Dairy is present in drinks made with milk or whipped cream. If you avoid dairy, 
 
 ---
 
+## Fairy Dust
+
+Fairy dust is an allergen found in coffee.
+
+---
 
 ## Caffeine
 
