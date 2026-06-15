@@ -1,0 +1,120 @@
+{
+  "@context": {
+    "coffee": "http://example.org/coffee-shop-menu#",
+    "schema": "http://schema.org/",
+    "id": "@id",
+    "type": "@type",
+    "name": "schema:name",
+    "description": "schema:description",
+    "attributes": "coffee:attributes",
+    "identityKey": "coffee:identityKey",
+    "humanRef": "coffee:humanRef",
+    "invariant": "coffee:invariant",
+    "relatesTo": {
+      "@id": "coffee:relatesTo",
+      "@type": "@id"
+    },
+    "from": {
+      "@id": "coffee:from",
+      "@type": "@id"
+    },
+    "to": {
+      "@id": "coffee:to",
+      "@type": "@id"
+    },
+    "precondition": "coffee:precondition",
+    "postcondition": "coffee:postcondition",
+    "Entity": "coffee:Entity",
+    "Operation": "coffee:Operation"
+  },
+  "@graph": [
+    {
+      "id": "coffee:Drink",
+      "type": "Entity",
+      "name": "Drink",
+      "description": "A beverage item on the menu",
+      "identityKey": "drinkId: UUID",
+      "humanRef": "name",
+      "attributes": {
+        "drinkId": "string",
+        "name": "string",
+        "description": "string",
+        "price": "number",
+        "category": "Coffee|Tea|Chocolate",
+        "isAvailable": "boolean"
+      },
+      "invariant": [
+        "name must be unique",
+        "price must be greater than 0"
+      ],
+      "relatesTo": [
+        "coffee:Ingredient"
+      ]
+    },
+    {
+      "id": "coffee:Ingredient",
+      "type": "Entity",
+      "name": "Ingredient",
+      "description": "An ingredient used in preparing drinks",
+      "identityKey": "ingredientId: UUID",
+      "humanRef": "name",
+      "attributes": {
+        "ingredientId": "string",
+        "name": "string",
+        "containsDairy": "boolean",
+        "containsCaffeine": "boolean"
+      },
+      "invariant": [
+        "name must be unique"
+      ],
+      "relatesTo": [
+        "coffee:Allergen"
+      ]
+    },
+    {
+      "id": "coffee:Allergen",
+      "type": "Entity",
+      "name": "Allergen",
+      "description": "An allergen that may be present in ingredients",
+      "identityKey": "allergenId: UUID",
+      "humanRef": "name",
+      "attributes": {
+        "allergenId": "string",
+        "name": "string"
+      },
+      "invariant": [
+        "name must be unique"
+      ]
+    },
+    {
+      "id": "coffee:ContainsIngredient",
+      "type": "Operation",
+      "name": "ContainsIngredient",
+      "description": "Links a drink to the ingredients it contains",
+      "from": "coffee:Drink",
+      "to": "coffee:Ingredient",
+      "precondition": [
+        "Drink must exist",
+        "Ingredient must exist"
+      ],
+      "postcondition": [
+        "Drink is associated with the Ingredient"
+      ]
+    },
+    {
+      "id": "coffee:TriggersAllergen",
+      "type": "Operation",
+      "name": "TriggersAllergen",
+      "description": "Links an ingredient to the allergens it triggers",
+      "from": "coffee:Ingredient",
+      "to": "coffee:Allergen",
+      "precondition": [
+        "Ingredient must exist",
+        "Allergen must exist"
+      ],
+      "postcondition": [
+        "Ingredient is associated with the Allergen"
+      ]
+    }
+  ]
+}
