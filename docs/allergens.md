@@ -45,6 +45,12 @@ Fairy dust is an allergen found in coffee.
 
 ---
 
+## Unicorn Dust
+
+Unicorn dust is a substance that has no allergens.
+
+---
+
 ## Caffeine
 
 Caffeine is a natural stimulant found in coffee and tea. We offer both regular and decaf options.
